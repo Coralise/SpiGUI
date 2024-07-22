@@ -1,13 +1,10 @@
 package com.samjakob.spigui;
 
-import com.samjakob.spigui.buttons.SGButton;
 import com.samjakob.spigui.menu.SGMenu;
 import com.samjakob.spigui.menu.SGMenuListener;
 import com.samjakob.spigui.menu.SGOpenMenu;
-import com.samjakob.spigui.item.ItemBuilder;
 import com.samjakob.spigui.toolbar.SGDefaultToolbarBuilder;
 import com.samjakob.spigui.toolbar.SGToolbarBuilder;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -254,7 +251,7 @@ public class SpiGUI {
                 Inventory topInventory = player.getOpenInventory().getTopInventory();
 
                 // If the top inventory is an SGMenu,
-                if (topInventory.getHolder() != null && topInventory.getHolder() instanceof SGMenu) {
+                if (topInventory.getHolder() instanceof SGMenu) {
                     // and the SGMenu has the tag matching the one we're checking for,
                     SGMenu inventory = (SGMenu) topInventory.getHolder();
                     if (Objects.equals(inventory.getTag(), tag))

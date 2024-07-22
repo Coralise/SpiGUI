@@ -287,13 +287,18 @@ public class SGMenu implements InventoryHolder {
     public void addButton(SGButton button) {
         // If slot 0 is empty, but it's the 'highest filled slot', then set slot 0 to contain button.
         // (This is an edge case for when the whole inventory is empty).
-        if (getHighestFilledSlot() == 0 && getButton(0) == null) {
-            setButton(0, button);
-            return;
-        }
+        // if (getHighestFilledSlot() == 0 && getButton(0) == null) {
+        //     setButton(0, button);
+        //     return;
+        // }
 
         // Otherwise, add one to the highest filled slot, then use that slot for the new button.
-        setButton(getHighestFilledSlot() + 1, button);
+        // setButton(getHighestFilledSlot() + 1, button);
+        for (int i = 0;i < getRowsPerPage()*9;i++) {
+            if (isStickiedSlot(i) || getButton(i) != null) continue;
+            setButton(i, button);
+            break;
+        }
     }
 
     /**
@@ -430,7 +435,7 @@ public class SGMenu implements InventoryHolder {
      * @return The highest page number that can be viewed.
      */
     public int getMaxPage() {
-        return (int) Math.ceil(((double) getHighestFilledSlot() + 1) / ((double) getPageSize()));
+        return (int) Math.ceil(((double) getHighestFilledSlot() + 1) / (getPageSize()));
     }
 
     /**

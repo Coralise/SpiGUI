@@ -261,7 +261,7 @@ public class SGMenuListener implements Listener {
         if (shouldIgnoreInventoryEvent(event.getInventory())) return;
 
         // Get the instance of the SpiGUI that was clicked.
-        SGMenu clickedGui = (SGMenu) event.getInventory().getHolder();
+        // SGMenu clickedGui = (SGMenu) event.getInventory().getHolder();
 
         // Cancel the drag event if any of the affected slots are in the
         // SpiGUI menu (the top inventory).
